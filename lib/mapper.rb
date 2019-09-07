@@ -13,5 +13,8 @@ class Mapper
 
     # if there are still 10 numbers after removing 0s and 1s; the number is valid
     return true if valid_number.length == 10
+
+    # return false if number is invalid since execution reaches this lines
+    return false
   end
 end
