@@ -1,3 +1,5 @@
+require 'set'
+
 class Mapper
   attr_reader :number, :dictionary
 
@@ -47,6 +49,16 @@ class Mapper
     @final
   end
 
+  # cartesian product of characters to get string combinations
+  def cartesian_product
+    number_to_string.inject(&:product).map(&:flatten)
+  end
+
+  # returns a 2d array with equivalent characters for the input number
+  def number_to_string
+    number.chars.map {|n| @number_map[n]}
+  end
+
   # returns array
   # WGWJAWMPPJ
   # WGWJA WMPPJ
@@ -85,16 +97,6 @@ class Mapper
       end
     end
     @final << temp if temp != []
-  end
-  
-  # cartesian product of characters to get string combinations
-  def cartesian_product
-    number_to_string.inject(&:product).map(&:flatten)
-  end
-
-  # returns a 2d array with equivalent characters for the input number
-  def number_to_string
-    number.chars.map {|n| @number_map[n]}
   end
   
   def valid_number?
