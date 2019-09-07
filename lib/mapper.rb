@@ -1,6 +1,8 @@
 class Mapper
-  attr_accessor :number
+  attr_reader :number, :dictionary
 
+  DICTIONARY_PATH = '/data/dictionary.txt'
+  
   def initialize(number)
     @number = number
 
@@ -14,6 +16,18 @@ class Mapper
       '8' => ['T', 'U', 'V'],
       '9' => ['W', 'X', 'Y', 'Z']
     }
+
+    create_dictionary
+  end
+
+  def create_dictionary
+    dict = []
+    File.foreach(Dir.pwd + DICTIONARY_PATH) do |line|
+      dict << line.strip
+    end
+
+    # convert dictionary arr to a Set for quick access
+    @dictionary = Set.new dict
   end
 
   # returns a 2d array with equivalent characters for the input number
