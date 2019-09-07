@@ -1,5 +1,6 @@
 require 'rspec'
-require_relative '../lib/mapper.rb'
+require_relative '../lib/mapper'
+require_relative 'fixtures'
 
 describe Mapper do
   let (:map_obj) {Mapper.new('6686787825')}
@@ -39,6 +40,25 @@ describe Mapper do
   describe '#check if a valid dictionary was created' do
     it 'call the dictionary method and verify its not empty' do
       expect(map_obj.dictionary).not_to be_empty
+    end
+  end
+
+  describe '#cartesian_product' do
+    it 'returns the count of the result array' do
+      expect(map_obj.cartesian_product.count).to eql(104976)
+    end
+  end
+
+  describe '#breakdown' do
+    it 'divides the string into sub strings of length 3 to 9' do
+      result = [["WGWJAWMPPJ"], ["WGWJA", "WMPPJ"], ["WGWJ", "AWMPPJ"], ["WGWJAW", "MPPJ"], ["WGW", "JAW", "MPPJ"], ["WGW", "JAWM", "PPJ"], ["WGWJ", "AWM", "PPJ"], ["WGW", "JAWMPPJ"], ["WGWJAWM", "PPJ"]]
+      expect(map_obj.breakdown('WGWJAWMPPJ')).to eql(result)
+    end
+  end
+
+  describe '#convert' do
+    it 'converts phone number to words' do
+      expect(map_obj.convert.map(&:join).count).to eql(44) # 44 is the result for `1686787825`
     end
   end
 end
