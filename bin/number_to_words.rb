@@ -4,5 +4,20 @@
 $:.unshift(File.expand_path('../lib', File.dirname(__FILE__)))
 require 'mapper.rb'
 
-number = Mapper.new('6686787825')
-p number.valid_number?
+parameters = ARGV
+
+begin
+  map_obj = Mapper.new(parameters[0])
+  if map_obj.valid_number?
+    map_obj.convert
+  else
+    raise "#{parameters[0]} is an invalid input"
+  end
+rescue => e
+  puts e.message
+  puts
+  puts 'Avoid 0s, 1s or characters in the input'
+  puts 'Length of input should be 10 digits'
+  puts 'Please try again'
+  puts
+end
