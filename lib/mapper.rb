@@ -15,11 +15,15 @@ class Mapper
       '9' => ['W', 'X', 'Y', 'Z']
     }
   end
+
+  def number_map
+    number.
+  end
   
   def valid_number?
     return false if number.nil?
 
-    # remove 0 and 1 from the string
+    # remove 0 and 1 and alphabets from the string
     valid_number = number.gsub(/[^2-9]/, '')
 
     # if there are still 10 numbers after removing 0s and 1s; the number is valid
