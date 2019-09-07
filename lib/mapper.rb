@@ -16,8 +16,9 @@ class Mapper
     }
   end
 
-  def number_map
-    number.
+  # returns a 2d array with equivalent characters for the input number
+  def number_to_string
+    number.chars.map {|n| @number_map[n]}
   end
   
   def valid_number?
@@ -29,7 +30,7 @@ class Mapper
     # if there are still 10 numbers after removing 0s and 1s; the number is valid
     return true if valid_number.length == 10
 
-    # return false if number is invalid since execution reaches this lines
+    # return false if number is invalid (since execution reaches this line)
     return false
   end
 end
