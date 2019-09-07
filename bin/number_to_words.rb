@@ -9,7 +9,7 @@ parameters = ARGV
 begin
   map_obj = Mapper.new(parameters[0])
   if map_obj.valid_number?
-    map_obj.convert
+    puts map_obj.convert.map{|f| f.join(',')}
   else
     raise "#{parameters[0]} is an invalid input"
   end
