@@ -1,6 +1,5 @@
 require 'rspec'
 require_relative '../lib/mapper'
-require_relative 'fixtures'
 
 describe Mapper do
   let (:map_obj) {Mapper.new('6686787825')}
