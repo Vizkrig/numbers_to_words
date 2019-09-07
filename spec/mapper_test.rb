@@ -57,7 +57,7 @@ describe Mapper do
 
   describe '#convert' do
     it 'converts phone number to words' do
-      expect(map_obj.convert.map(&:join).count).to eql(44) # 44 is the result for `1686787825`
+      expect(map_obj.convert.map(&:join).count).to eql(44) # 44 results for `1686787825`
     end
   end
 end
