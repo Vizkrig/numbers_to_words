@@ -59,7 +59,7 @@ Note: Windows users may need to install cygwin for `chmod` to work
 
 The script can be executed by running the following
 ```
-./bin/numbers_to_words <parameters>
+./bin/numbers_to_words <input>
 ```
 
 Example: 
